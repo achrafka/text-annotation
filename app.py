@@ -32,7 +32,7 @@ def nlpProcess():
                   y = word.label_ + y
                   z = word.start_char
                   w = word.end_char
-                  print (w)
+                
                   formatJ = json.dumps({'Annotation':{"start": z, "end":w,'label': y ,'Text': x}}, indent = 2)
                   print (formatJ)
                   return render_template('results.html', rawtext=rawtext,results = results,y=y, formatJ = json.dumps({'document':str(doc)})+formatJ)
