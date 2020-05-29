@@ -8,7 +8,7 @@ import { AnnotComponent } from './components/annot/annot.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
-{ path: 'accueil', component: AnnotComponent},
+{ path: 'accueil', component: AnnotComponent, data: { title: 'Accueil' }},
 { path: '', redirectTo: 'accueil', pathMatch: 'full' }
 ];
 
