@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Annotation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+  
+<style>
+  li.check_18 {
+    background: #e4e7d2;
+}
+  li.check_16 {
+    background: #e4e7d2;
+}
+  li.check_9 {
+    background: #ff8197;
+}
+  li.check_10 {
+    background: #ff8197;
+}
+  li.check_12 {
+    background: #bfe1d9;
+}
+  li.check_8 {
+    background: #f0d0ff;
+}
+  li.check_11 {
+    background: #bfe1d9;
+}
+  li.check_13 {
+    background: #e4e7d2;
+}
+  li.check_2 {
+    background: #ddd;
+}
+  li.check_7 {
+    background: #ffeb80;
+}
+  li.check_1 {
+    background: #c887fb;
+}
+  li.check_5 {
+    background: #ff9561;
+}
+  li.check_4 {
+    background: #feca74;
+}
+  li.check_6 {
+    background: #bfeeb7;
+}
+  li.check_17 {
+    background: #e4e7d2;
+}
+  li.check_15 {
+    background: #e4e7d2;
+}
+  li.check_14, li.check_14:hover {
+    background: #aa9cfc;
+}
+li.check_3, li.check_3:hover {
+    background: #7aecec;
+}
+.forms_ {
+    margin-top:80px;
+}
+.contenu textarea {
+    width: 100%!important;
+    height: 300px;
+    border-color: #000;
+}
+button.label_annot {
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    padding: 15px;
+    transition: all .4s;
+    margin-top: 40px;
+}
+     </style>
+  </head>
+  <body>
+   
+    <div class="col-md-12 forms_"  >
+
+      <form method="POST" action="/extract">
+        <div class="">
+          <strong>Label List :</strong>
+            <select id="multiple-checkboxes" multiple="multiple">
+                <option checked class="check_1" value="NORP" name="NORP">NORP (Nationalities or religious or political groups)</option>
+                <option class="check_2" value="FAC" name="FAC">FAC (Buildings, airports,highways,bridges,etc)</option>
+                <option class="check_3" value="ORG" nae="ORG">ORG (Companies,agencies,institutions,etc)</option>
+                <option class="check_4" value="GPE" name="GPE">GPE (Countries,cities,states)</option>
+                <option class="check_5" value="LOC" name="LOC">LOC (mountain rages, bodies of water)</option>
+                <option class="check_6" value="PRODUCT" name="PRODUCT">PRODUCT (Objects,vehicles,foods,etc)</option>
+                <option class="check_7" value="EVENT" name="EVENT">EVENT (battles,wars,sports,events,etc)</option>
+                <option class="check_8" value="jqueWORK_OF_ARTry" name="WORK_OF_ART">WORK_OF_ART (titles of books,songs,etc)</option>
+                <option class="check_9" value="LAW" name="LAW">LAW (Named documents made into laws)</option>
+                <option class="check_10" value="LANGUAGE" name="LANGUAGE">LANGUAGE (Any named language)</option>
+                <option class="check_11" value="DATE" name="DATE">DATE</option>
+                <option class="check_12" value="TIME" name="TIME">TIME (Time smaller than a day)</option>
+                <option class="check_13" value="PERCENT" name="PERCENT">PERCENT (%)</option>
+                <option class="check_14" value="PERSON" name="PERSON">PERSON</option>
+                <option class="check_15" value="MONEY" name="MONEY">MONEY</option>
+                <option class="check_16" value="QUANTITY" name="QUANTITY">QUANTITY (Measurements, as of weight or distance)</option>
+                <option class="check_17" value="ORDINAL" name="ORDINAL">ORDINAL ("First","second",etc)</option>
+                <option class="check_18" value="CARDINAL" name="CARDINAL">CARDINAL (Numerals that do not fall under another type)</option>
+            </select>
+        </div>
+      <div class="col-md-12 contenu">
+        <textarea class="textar"name="rawtext"></textarea>
+        </div>  
+        <button class="label_annot"type="submit">label words </button>
+      </form>
+      </div>
+
+<script>
+  $(document).ready(function() {
+        $('#multiple-checkboxes').multiselect({
+          includeSelectAllOption: true,
+        });
+    });
+</script>
+</body>
+</html>
+
+  
+  
