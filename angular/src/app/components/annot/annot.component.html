@@ -1,0 +1,20 @@
+<div class="col-md-12 forms_"  >
+<label>Entrez votre choix :</label>
+<form method="POST" action="/extract" [formGroup]="myForm">
+<ng-multiselect-dropdown
+        name="lab"
+        [placeholder]="'Choose'"
+        [data]="labels"
+        formControlName="lab"
+        [disabled]="disabled"
+        [settings]="dropdownSettings"
+        (onSelect)="onItemSelect($event)">
+</ng-multiselect-dropdown>
+<div class="col-md-12 textar">
+  <textarea #message [placeholder]="'write your text'" name="rawtext">ok ok ok ok</textarea>
+  </div>
+  <button type="reset">Clear</button>
+  <button type="submit">Submit</button>
+</form>
+</div>
+
