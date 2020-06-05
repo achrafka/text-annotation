@@ -91,25 +91,11 @@ button.label_annot {
       <form method="POST" action="/extract">
         <div class="">
           <strong>Label List :</strong>
-            <select id="multiple-checkboxes" multiple="multiple">
-                <option checked class="check_1" value="NORP" name="NORP">NORP (Nationalities or religious or political groups)</option>
-                <option class="check_2" value="FAC" name="FAC">FAC (Buildings, airports,highways,bridges,etc)</option>
-                <option class="check_3" value="ORG" nae="ORG">ORG (Companies,agencies,institutions,etc)</option>
-                <option class="check_4" value="GPE" name="GPE">GPE (Countries,cities,states)</option>
-                <option class="check_5" value="LOC" name="LOC">LOC (mountain rages, bodies of water)</option>
-                <option class="check_6" value="PRODUCT" name="PRODUCT">PRODUCT (Objects,vehicles,foods,etc)</option>
-                <option class="check_7" value="EVENT" name="EVENT">EVENT (battles,wars,sports,events,etc)</option>
-                <option class="check_8" value="jqueWORK_OF_ARTry" name="WORK_OF_ART">WORK_OF_ART (titles of books,songs,etc)</option>
-                <option class="check_9" value="LAW" name="LAW">LAW (Named documents made into laws)</option>
-                <option class="check_10" value="LANGUAGE" name="LANGUAGE">LANGUAGE (Any named language)</option>
-                <option class="check_11" value="DATE" name="DATE">DATE</option>
-                <option class="check_12" value="TIME" name="TIME">TIME (Time smaller than a day)</option>
-                <option class="check_13" value="PERCENT" name="PERCENT">PERCENT (%)</option>
-                <option class="check_14" value="PERSON" name="PERSON">PERSON</option>
-                <option class="check_15" value="MONEY" name="MONEY">MONEY</option>
-                <option class="check_16" value="QUANTITY" name="QUANTITY">QUANTITY (Measurements, as of weight or distance)</option>
-                <option class="check_17" value="ORDINAL" name="ORDINAL">ORDINAL ("First","second",etc)</option>
-                <option class="check_18" value="CARDINAL" name="CARDINAL">CARDINAL (Numerals that do not fall under another type)</option>
+            <select id="multiple-checkboxes" multiple="multiple" name="lab_s">
+              {% for o in data %}
+                <option checked class="check_1" value="{{o.name}}">{{o.name}}</option>
+            
+              {% endfor %}
             </select>
         </div>
       <div class="col-md-12 contenu">
@@ -122,7 +108,7 @@ button.label_annot {
 <script>
   $(document).ready(function() {
         $('#multiple-checkboxes').multiselect({
-          includeSelectAllOption: true,
+          includeSelectAllOption: false,
         });
     });
 </script>
