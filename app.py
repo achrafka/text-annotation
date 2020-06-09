@@ -1,6 +1,6 @@
 from flask import Flask,jsonify,render_template,url_for
 import re, spacy, os
-from flask import request
+from flask import request, make_response
 import json
 import spacy
 from spacy import displacy
@@ -61,6 +61,12 @@ def nlpProcess():
               return labs + ' not found in '+rawtext              
             else:
                 return render_template('results.html', rawtext=rawtext,results = results)
+
+@app.route("/annotation", methods=["GET", "POST"])
+def annotate(): 
+  if request.method == 'POST':
+    return render_template('annotation.html')
+
 spacy.explain('LOC')
 if __name__=="__main__":
     app.run(debug=True)

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Text annotation</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		.header{
+			width: 100%;
+			text-align: center;
+		}
+		div#entity {
+    display: flex;
+    align-items: center;
+}
+	
+		.btn_, button#save, button#edit {
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    padding: 15px;
+    transition: all .4s;
+}
+		.pdn{
+			display: inline-flex;
+			padding: 2px 0px;
+		}
+		.class{
+			height: 45px;
+    		display: table;
+    		padding: 10px 35px;
+    		background-color: lightskyblue;
+    		border: 1px solid;
+    		cursor: pointer;
+		}
+		.class span{
+			color: #fff;
+			vertical-align: middle;
+			display: table-cell;
+		}
+		.entot{
+			margin: 15px 30px;
+			width: 100%;
+			height: 150px;
+			border: 1px solid;
+			overflow-y: auto;
+		}
+		.ent_l{
+				color:#fff;		
+		}
+		.ctrtext{
+			padding: 0px 70px;
+		}
+		.ctrbtn{
+			text-align: center;
+		}
+		.pull-right{
+			float: right;
+		}
+		.dele_ {
+			display:none;
+			color: #ca4545;
+    font-weight: bold;
+			
+		}
+		.entityval div {
+    padding: 6px;
+}
+		.addclass {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+		#editor {
+			width: 100%;
+	height: 200px;
+	margin: 15px 30px;
+    border: 1px solid #000;
+    padding: 10px;
+    font-size: 14px;
+    font-family: monospace;
+    overflow-y: auto;
+		}
+		.next-content{
+			text-align: center;
+			padding-top: 10px;
+		}
+
+		.entityval{
+			float: left;
+    		padding: 4px 4px;
+    		color: white;
+		    font-size: 14px;
+		    font-family: monospace;
+		}
+		div#editor span {
+    padding: 7px 14px;
+    color: #fff;
+    border-radius: 8px;
+}
+		.entityval div{
+			cursor: pointer;
+		}
+		.delete_btn{
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+		}
+		.note{
+			text-align: center;
+			padding-top: 12px;
+			-webkit-animation:colorchange 20s infinite alternate;
+		}
+
+	    @-webkit-keyframes colorchange {
+	      0% {
+	        
+	        color: blue;
+	      }
+	      
+	      10% {
+	        
+	        color: red;
+	      }
+	      
+	      20% {
+	        
+	        color: #1abc9c;
+	      }
+	      
+	      30% {
+	        
+	        color: #d35400;
+	      }
+	      
+	      40% {
+	        
+	        color: blue;
+	      }
+	      
+	      50% {
+	        
+	        color: #34495e;
+	      }
+	      
+	      60% {
+	        
+	        color: blue;
+	      }
+	      
+	      70% {
+	        
+	        color: #2980b9;
+	      }
+	      80% {
+	     
+	        color: darkred;
+	      }
+	      
+	      90% {
+	     
+	        color: #2980b9;
+	      }
+	      
+	      100% {
+	        
+	        color: pink;
+	      }
+	    }
+	    #fileUpload{
+	    	display: none;
+	    }
+	</style>
+</head>
+<body>
+	<div class="col-12">
+
+		<div class="row">
+			
+		
+				<div class="entdiv">
+					
+					<div class="col-12 classes">
+						<div class="addclass">
+							<div class="ctrtext">
+								<input class="form-control" type="text" placeholder="Add Label">
+							</div>
+							<div class="ctrbtn">
+								<button type="button" class="btn_" id="addclass">Add</button>
+							</div>
+						</div>
+				
+					</div>
+				
+					
+				</div>
+	
+		</div>
+	</div>
+	<div class="col-12">
+		<div class="row content">
+
+			<div class="col-12">
+				<button type="button" class="" id="save">Save</button>
+				<button type="button" class="" id="edit">Edit</button>
+			</div>
+			
+			
+			<div id="editor" contenteditable="true" onpaste="myFunction()">
+			
+			</div>
+
+			<div class="dele_">Click to delete: </div>			
+						<div id="entity">
+					
+						</div>
+		</div>
+	
+	</div>
+	
+	<button type="button" data-toggle="modal" data-target="#GSCCModal" class="btn_">choose file (txt*)</button>
+	<div class="next-content">
+					
+		<button type="button" id="complete" class="btn_">Download JSON</button>
+	</div>
+	<div class="modal fade" id="GSCCModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">File Upload</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+		  </div>
+		  
+	      <div class="modal-body">
+	        <form class="was-validated">
+	        	<div class="custom-file">
+				    <input type="file" class="custom-file-input" id="validatedCustomFile" onchange="getFilename(this)" accept=".txt" required>
+				    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+				    <div class="invalid-feedback">upload file txt</div>
+				</div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" data-dismiss="modal" id="upload">Upload</button>
+	      </div>
+	    </div>
+	  </div>
+	  
+	</div>
+	<script src="{{url_for('static',filename='annotation.js')}}"></script>
+</body>
+</html>

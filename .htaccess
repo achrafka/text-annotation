@@ -1,3 +1,0 @@
-# Force MIME Type text/javascript for all .js files
-# Needed for Angular 8 since type="text/javascript" is not specified anymore in <script> tags in index.html
-AddType text/javascript .js
